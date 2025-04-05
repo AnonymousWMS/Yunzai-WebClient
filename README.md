@@ -65,6 +65,10 @@
 
 3.  **连接:**
     在客户端界面顶部的输入框中确认 WebSocket 地址正确，然后点击“连接”按钮。
+    ```bash
+    WebSocket地址
+    ws//:localhost:2537/WebChat
+    ```
 
 4.  **交互:**
     连接成功后，即可与 Yunzai-Bot 进行交互。

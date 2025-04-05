@@ -23,7 +23,13 @@
 
 1.  **克隆仓库:**
     ```bash
+    Github
     git clone https://github.com/AnonymousWMS/Yunzai-WebClient.git
+    cd Yunzai-WebClient
+    ```
+    ```bash
+    Gitee（很有可能不更新）
+    git clone https://gitee.com/AnonymousWMS/Yunzai-WebClient.git
     cd Yunzai-WebClient
     ```
 

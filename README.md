@@ -17,7 +17,7 @@
 
 *   [Node.js](https://nodejs.org/) (建议 LTS 版本)
 *   [pnpm](https://pnpm.io/) (或 npm/yarn)
-*   已安装并能运行的 [Yunzai-Bot](https://gitee.com/Le-niao/Yunzai-Bot) (GPL-3.0 许可)
+*   已安装并能运行的 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai) (GPL-3.0 许可)
 
 ## 🔧 安装与设置
 

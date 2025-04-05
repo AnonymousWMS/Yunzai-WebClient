@@ -64,6 +64,6 @@
 本项目包含多个许可证下的组件：
 
 *   **Web 客户端 (`client/` 目录):** 基于 MIT 许可的库构建，其本身采用 [MIT](./LICENSE) 许可证。
-*   **Yunzai 适配器 (`adapter/webchat.js`):** 作为 [Yunzai-Bot](https://gitee.com/Le-niao/Yunzai-Bot) 的插件，此部分代码遵循 **GNU General Public License v3.0 (GPL-3.0)**。
+*   **Yunzai 适配器 (`adapter/webchat.js`):** 作为 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai) 的插件，此部分代码遵循 **GNU General Public License v3.0 (GPL-3.0)**。
 
 使用或分发本项目时，请务必遵守各个组件对应的许可证要求。

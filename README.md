@@ -4,7 +4,7 @@
 通过 WebSocket 连接和交互 Yunzai-Bot
 旨在让Bot脱离QQ、微信等社交平台独立运行
 
-**使用CursorAI的Gemini 2.5 Pro Exp制作**
+使用CursorAI的Gemini 2.5 Pro制作
 
 
 ## ✨ 特性

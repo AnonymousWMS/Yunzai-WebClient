@@ -1,10 +1,8 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Layout, Input, Button, Space, Tag } from 'antd'
+import { Input, Button, Space, Tag } from 'antd'
 import { Bubble, Sender } from '@ant-design/x'
 import type { BubbleProps } from '@ant-design/x'
 import './App.css'
-
-const { Header, Content, Footer } = Layout
 
 // 定义消息接口 (适配 Bubble.List 的 items)
 interface MessageItem extends BubbleProps {
@@ -14,7 +12,7 @@ interface MessageItem extends BubbleProps {
 }
 
 function App() {
-  const [wsUrl, setWsUrl] = useState('ws://localhost:2536/WebChat')
+  const [wsUrl, setWsUrl] = useState('ws://localhost:2537/WebChat')
   const [isConnected, setIsConnected] = useState(false)
   const [statusText, setStatusText] = useState('未连接')
   const [statusColor, setStatusColor] = useState<string>('grey')
@@ -79,6 +77,7 @@ function App() {
         payload: {
           user_id: userId.current,
           nickname: nickname.current,
+          token: 'XdrlckdKIvTBGk4qxYopvAfgp4zMWpUR'
         },
       }
       try {
@@ -120,7 +119,7 @@ function App() {
             }
 
             if (typeof receivedPayload.message === 'string') {
-              contentNode = receivedPayload.message.replace(/\n/g, '<br />')
+              contentNode = <span dangerouslySetInnerHTML={{ __html: receivedPayload.message.replace(/\n/g, '<br />') }} />
             } else if (Array.isArray(receivedPayload.message)) {
               contentNode = receivedPayload.message.map((seg: any, index: number) => {
                 const imgNode = processImageSegment(seg)
@@ -253,12 +252,25 @@ function App() {
   const chatMessages = messages.filter(msg => msg.type !== 'system')
 
   return (
-    // Ensure Layout fills viewport and uses column flex layout
-    <Layout style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-      {/* Header should not shrink */}
-      <Header style={{ display: 'flex', alignItems: 'center', padding: '0 20px', backgroundColor: '#f0f2f5', flexShrink: 0 }}>
+    // --- Main container using Flexbox ---
+    <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100vh', // Keep full height
+        // --- Add these for centering ---
+        maxWidth: '1200px', // Set a maximum width (adjust as needed)
+        margin: '0 auto', // Center horizontally
+        // --- Optionally add border or shadow for visual separation ---
+        // borderLeft: '1px solid #d9d9d9',
+        // borderRight: '1px solid #d9d9d9',
+        // boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+        // --- Keep existing background color ---
+        backgroundColor: '#f0f2f5' // Or maybe keep it transparent if body bg is desired
+     }}>
+
+      {/* --- Top Connection Panel --- */}
+      <div style={{ padding: '10px 20px', backgroundColor: '#ddd', flexShrink: 0, borderBottom: '1px solid #ccc' }}>
         <Space>
-          {/* Header content */}
           <Input
             addonBefore="WebSocket URL"
             value={wsUrl}
@@ -273,39 +285,35 @@ function App() {
           )}
           <Tag color={statusColor}>{statusText}</Tag>
         </Space>
-      </Header>
-      {/* Content should grow to fill space and allow internal scrolling */}
-      <Content
-        ref={chatContentRef}
-        style={{
-          flexGrow: 1, // Take up remaining vertical space
-          overflowY: 'auto', // Allow scrolling when content overflows
-          padding: '20px', // Internal padding for content
-          backgroundColor: '#fff' // White background for chat area
-          // The Layout component's default behavior should handle the children stacking correctly.
-        }}
-      >
-        {/* Bubble.List renders chat messages */}
-        <Bubble.List items={chatMessages} />
-        {/* System messages rendered below chat messages */}
-        {messages.filter(msg => msg.type === 'system').map(msg => (
-          <div key={msg.id} style={{ textAlign: 'center', margin: '5px 0' }}>
-            <Tag color="blue">{msg.content as React.ReactNode}</Tag>
-          </div>
-        ))}
-      </Content>
-      {/* Footer should not shrink */}
-      <Footer style={{ padding: '10px 20px', backgroundColor: '#f0f2f5', flexShrink: 0 }}>
-        {/* Sender component */}
-        <Sender
-           placeholder="输入消息..."
-           onSubmit={handleSendMessage}
-           disabled={!isConnected}
-           value={inputValue}
-           onChange={setInputValue}
-         />
-      </Footer>
-    </Layout>
+      </div>
+
+      {/* --- Bottom Chat Panel --- */}
+      <div style={{ flexGrow: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' /* Prevent parent scroll */ }}>
+
+        {/* Message List Area (Scrollable) */}
+        <div ref={chatContentRef} style={{ flexGrow: 1, overflowY: 'auto', padding: '20px', backgroundColor: '#fff' }}>
+          <Bubble.List items={chatMessages} />
+          {/* Optional: Render system messages within the scrollable area */}
+           {messages.filter(msg => msg.type === 'system').map(msg => (
+               <div key={msg.id} style={{ textAlign: 'center', margin: '5px 0' }}>
+                   <Tag color="blue">{msg.content as React.ReactNode}</Tag>
+               </div>
+           ))}
+        </div>
+
+        {/* Sender Input Area */}
+        <div style={{ padding: '10px 20px', backgroundColor: '#eee', flexShrink: 0, borderTop: '1px solid #ccc' }}>
+          <Sender
+            placeholder="输入消息..."
+            onSubmit={handleSendMessage}
+            disabled={!isConnected}
+            value={inputValue}
+            onChange={setInputValue}
+          />
+      </div>
+      </div> {/* End of Bottom Chat Panel */}
+
+    </div> // End of Main Container
   )
 }
 

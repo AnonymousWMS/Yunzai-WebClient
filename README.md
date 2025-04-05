@@ -24,7 +24,7 @@
 1.  **克隆仓库:**
     ```bash
     git clone https://github.com/AnonymousWMS/Yunzai-WebClient.git
-    cd 你的仓库名
+    cd Yunzai-WebClient
     ```
 
 2.  **安装客户端依赖:**

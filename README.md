@@ -23,7 +23,7 @@
 
 1.  **克隆仓库:**
     ```bash
-    git clone https://github.com/你的用户名/你的仓库名.git # 替换为你的仓库地址
+    git clone https://github.com/AnonymousWMS/Yunzai-WebClient.git
     cd 你的仓库名
     ```
 
@@ -31,11 +31,10 @@
     ```bash
     cd client
     pnpm install
-    cd ..
     ```
 
 3.  **放置适配器:**
-    将项目根目录下的 `adapter/webchat.js` 文件复制到你的 Yunzai-Bot 安装目录下的 `plugins/adapter/` 文件夹中。
+    将项目根目录下的 `adapter/webchat.js` 文件复制到你的 TRSS-Yunzai 安装目录下的 `plugins/adapter/` 文件夹中。
     **注意:** 此适配器是为 GPL-3.0 许可的 Yunzai-Bot 编写的插件，因此受 GPL-3.0 许可证约束。
 
 ## 💡 使用方法

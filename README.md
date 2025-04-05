@@ -32,6 +32,11 @@
     git clone https://gitee.com/AnonymousWMS/Yunzai-WebClient.git
     cd Yunzai-WebClient
     ```
+    ```bash
+    GitClone
+    git clone https://gitclone.com/github.com /AnonymousWMS/Yunzai-WebClient.git
+    cd Yunzai-WebClient
+    ```
 
 2.  **安装客户端依赖:**
     ```bash

@@ -103,3 +103,6 @@
 *   **Yunzai 适配器 (`adapter/webchat.js`):** 作为 [TRSS-Yunzai](https://github.com/TimeRainStarSky/Yunzai) 的插件，此部分代码遵循 **GNU General Public License v3.0 (GPL-3.0)**。
 
 使用或分发本项目时，请务必遵守各个组件对应的许可证要求。
+
+## 趋势
+[![Stargazers over time](https://starchart.cc/AnonymousWMS/Yunzai-WebClient.svg?variant=adaptive)](https://starchart.cc/AnonymousWMS/Yunzai-WebClient)

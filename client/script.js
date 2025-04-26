@@ -1,0 +1,1 @@
+https://raw.githubusercontent.com/AnonymousWMS/Yunzai-WebChat-Plugin-Client/main/script.js
